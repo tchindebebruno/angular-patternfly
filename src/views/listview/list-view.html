@@ -48,10 +48,26 @@
                 <li ng-repeat="menuAction in $ctrl.menuActions"
                     ng-if="menuAction.isVisible !== false"
                     role="{{menuAction.isSeparator === true ? 'separator' : 'menuitem'}}"
-                    ng-class="{'divider': (menuAction.isSeparator === true), 'disabled': (menuAction.isDisabled === true)}">
-                  <a ng-if="menuAction.isSeparator !== true" title="{{menuAction.title}}" ng-click="$ctrl.handleMenuAction(menuAction, item)">
+                    ng-class="{ 'dropdown-submenu': menuAction.subMenus,'divider': (menuAction.isSeparator === true), 'disabled': (menuAction.isDisabled === true)}">
+                  <a
+                      tabindex="-1"
+                      class=""
+                      id="subDropdownKebabRight_{{menuAction.name}}"
+                      ng-if="menuAction.isSeparator !== true" title="{{menuAction.title}}" 
+                      ng-click="$ctrl.handleMenuAction(menuAction, item)">
                     {{menuAction.name}}
                   </a>
+                  <ul ng-if="menuAction.subMenus" class="dropdown-menu subMenus dropdown-menu-right" aria-labelledby="subDropdownKebabRight_{{menuAction.name}}" >
+                    <li ng-repeat="subMenu in menuAction.subMenus">
+                      <a ng-if="subMenu.isSeparator != true" title="{{subMenu.title}}" 
+                         ng-click="$ctrl.handleMenuAction(subMenu, item)">{{subMenu.name}}</a>
+                    </li>
+                  </ul>
+                  <!--<ul ng-if="menuAction.subMenus" class="dropdown-menu">
+                    <li ng-repeat="subMenu in menuAction.subMenus">
+                      <a href="#0">Link</a>
+                    </li>
+                  </ul>-->
                 </li>
               </ul>
             </div>

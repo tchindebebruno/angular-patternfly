@@ -15,9 +15,9 @@
     "angular-animate": "1.5.*",
     "angular-sanitize": "1.5.*",
     "angular-svg-base-fix": "2.0.0",
-    "angular-ui-bootstrap": "2.3.x",
+    "angular-ui-bootstrap": "^2.5.6",
     "lodash": "4.x",
-    "patternfly": "^3.37.1"
+    "patternfly": "^3.44.0"
   },
   "devDependencies": {
     "angular-dragdrop": "1.0.13",
